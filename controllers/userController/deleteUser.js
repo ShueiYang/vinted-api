@@ -11,9 +11,10 @@ async function deleteUser(req, res) {
         if(userToDelete.account.avatar) {
             await deleteAvatar(userId);
         }
-        await Offer.deleteMany({ owner: userId })
-        await deleteAllUserOffers(userId);
-
+        const offers = await Offer.deleteMany({ owner: userId })
+        if(offers.deletedCount !== 0) {
+            await deleteAllUserOffers(userId);  
+        }   
         res.status(200).json({
             message: "account succesfully deleted"
         })
