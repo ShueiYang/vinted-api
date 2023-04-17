@@ -1,6 +1,7 @@
-const User = require("../../models/User");
+const uid2 = require("uid2");
 const SHA256 = require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-base64");
+const User = require("../../models/User");
 
 
 async function handlePassword(req, res) {
@@ -17,7 +18,10 @@ async function handlePassword(req, res) {
         if (updatePassword === userToUpdate.hash) {
             throw { status: 401, message: "New password must be different than the previous one" }
         }
-        userToUpdate.hash = updatePassword
+        const newSalt =  uid2(16);
+        const newUpdatePassword = SHA256(newPassword + newSalt).toString(encBase64)
+        userToUpdate.salt = newSalt;
+        userToUpdate.hash = newUpdatePassword;
         await userToUpdate.save();
         res.json({ message: "password succesfully updated!" })
 
