@@ -2,7 +2,13 @@ const uid2 = require("uid2");
 const SHA256 = require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-base64");
 const User = require("../../models/User");
+const sendEmail = require("../../services/nodeMailer");
 
+// Pour le Html form au cas ou...
+// const html = `
+//     <h1>Password changed!</h1>
+//     <p>You recently changed your password!</p>
+// `;
 
 async function handlePassword(req, res) {
     try {
@@ -18,11 +24,13 @@ async function handlePassword(req, res) {
         if (updatePassword === userToUpdate.hash) {
             throw { status: 401, message: "New password must be different than the previous one" }
         }
-        const newSalt =  uid2(16);
+        const newSalt = uid2(16);
         const newUpdatePassword = SHA256(newPassword + newSalt).toString(encBase64)
         userToUpdate.salt = newSalt;
         userToUpdate.hash = newUpdatePassword;
         await userToUpdate.save();
+        //send Email to notify user the password is changed.
+        await sendEmail(userToUpdate.email, "You recently changed your password!");
         res.json({ message: "password succesfully updated!" })
 
     } catch (err) {
