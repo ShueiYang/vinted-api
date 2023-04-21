@@ -4,7 +4,7 @@ const encBase64 = require("crypto-js/enc-base64");
 const User = require("../../models/User");
 const sendEmail = require("../../services/nodeMailer");
 
-// Pour le Html form au cas ou...
+// For Html form just in case...
 // const html = `
 //     <h1>Password changed!</h1>
 //     <p>You recently changed your password!</p>
@@ -30,7 +30,7 @@ async function handlePassword(req, res) {
         userToUpdate.hash = newUpdatePassword;
         await userToUpdate.save();
         //send Email to notify user the password is changed.
-        await sendEmail(userToUpdate.email, "You recently changed your password!");
+        await sendEmail(userToUpdate.email, "You recently changed your password, if it's not you you may be hacked!");
         res.json({ message: "password succesfully updated!" })
 
     } catch (err) {
