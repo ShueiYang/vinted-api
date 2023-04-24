@@ -19,8 +19,8 @@ async function sendEmail(userEmail, messageForm) {
       const info = await transporter.sendMail({
         from: '"Kim Boo 👻" <vinted@example.com>', // sender address
         to: userEmail, // list of receivers
-        subject: "Vinted account password changed", // Subject line
-        text: messageForm, // plain text body
+        subject: messageForm.subjectTitle, // Subject line
+        text: messageForm.message,  // plain text body
         // html: html    // can also sent in HTML form
       });    
       // console.log("Message sent: %s", info.messageId);

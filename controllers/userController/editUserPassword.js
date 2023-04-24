@@ -30,7 +30,10 @@ async function handlePassword(req, res) {
         userToUpdate.hash = newUpdatePassword;
         await userToUpdate.save();
         //send Email to notify user the password is changed.
-        await sendEmail(userToUpdate.email, "You recently changed your password, if it's not you you may be hacked!");
+        await sendEmail(userToUpdate.email, {
+            subjectTitle: "Vinted account password changed",
+            message: "You recently changed your password, if it's not you you may be hacked!"
+        })            
         res.json({ message: "password succesfully updated!" })
 
     } catch (err) {
