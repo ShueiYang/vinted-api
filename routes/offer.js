@@ -13,11 +13,24 @@ const deleteOffer = require("../controllers/offerController/deleteOffer");
 const showOffer = require("../controllers/offerController/showOfferDetail");
 
 
-offerRoute.post("/publish", isAuthenticated, fileUpload(), validate(publishForm), publishOffer);
+offerRoute.post("/publish", 
+    isAuthenticated, 
+    fileUpload(), 
+    validate(publishForm), 
+    publishOffer
+);
 
-offerRoute.put("/update/:id", isAuthenticated, fileUpload(), validate(updateForm), updateOffer);
+offerRoute.put("/update/:id", 
+    isAuthenticated, 
+    fileUpload(), 
+    validate(updateForm),
+    updateOffer
+);
 
-offerRoute.delete("/delete/:id", isAuthenticated, deleteOffer);
+offerRoute.delete("/delete/:id", 
+    isAuthenticated,
+    deleteOffer
+);
 
 offerRoute.get("/:id", showOffer);
 
