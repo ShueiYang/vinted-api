@@ -18,8 +18,22 @@ const userForm = [
         .isBoolean().withMessage("newsletter must be a boolean")   
 ]
 
+const emailResetForm = [
+    body("email").isEmail().withMessage("Please provide a valid email")
+] 
+
+const resetPasswordForm = [
+    body("password")
+        .notEmpty().withMessage("Please enter your new password")
+        .isLength({min: 8}).withMessage("Password must be at least 8 characters long"),  
+    body("confirmPassword")
+        .notEmpty().withMessage("Please enter your new password")
+        .isLength({min: 8}).withMessage("Password must be at least 8 characters long"),   
+]
 
 module.exports = {
     passwordForm,
-    userForm
+    userForm,
+    emailResetForm,
+    resetPasswordForm
 }
