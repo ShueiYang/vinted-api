@@ -8,6 +8,7 @@ const offerSchema = new Schema({
     product_details: Array,
     product_image: Object,
     product_pictures: Array,
+    product_date: { type: Date, default: Date.now },
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User" 
