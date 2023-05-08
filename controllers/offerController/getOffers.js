@@ -50,12 +50,7 @@ async function getOffers(req, res) {
             .sort(sortFilter);
         
         const count = await Offer.countDocuments(query);
-        if(!results.length) {
-            return res.status(200).json({
-                count,
-                message: "No result found"
-            })
-        }     
+        
         res.json({
             count,
             offers: results

@@ -7,10 +7,14 @@ const { uploadUserAvatar } = require("../../services/cloudinary");
 
 async function handleRegister(req, res) {
     try {
-        const { username, email, password, newsletter } = req.body   
+        const { username, email, password, newsletter, checkPassword } = req.body  
+     
         const emailFound = await User.findOne({email})
         if(emailFound !== null) {
             throw { status: 409, message: "Email already existed"}
+        }
+        if(password !== checkPassword) {
+            throw { status: 418, message: "Password didnt match the teapot"}
         }
         // build the hash in order to save to DB
         const token = uid2(64);
@@ -21,7 +25,7 @@ async function handleRegister(req, res) {
             token,
             email,
             account: {
-            username,
+              username,
             },
             newsletter,
             hash,
