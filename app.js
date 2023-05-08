@@ -8,8 +8,13 @@ const offersRoute = require("./routes/offers");
 
 const app = express();
 
+const corsOptions = {
+    origin: "https://shueiyang-vinted.netlify.app",
+    credentials: true,
+};
+
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res)=> {

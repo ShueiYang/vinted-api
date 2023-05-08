@@ -8,6 +8,17 @@ To keep "learning by doing" I also build some new route for User in order for th
 ## New additional route for User
 <br>
 
+### /user/ (GET)
+
+Get user
+
+| Headers        | Required | Description |
+| -------------- | -------- | ----------- |
+| `Bearer token` | Yes      | user token  |
+
+<br>
+<br>
+
 ### /user/update (PUT)
 
 Edit user
