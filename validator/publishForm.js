@@ -12,7 +12,7 @@ const publishForm = [
         .isLength({max: 500}).withMessage("Field must be at most 500 characters"),
     body("price")
         .notEmpty().withMessage("Price Missing")
-        .isFloat({gt: 0, max: 100000}).withMessage("Price must be greater than 0 and not exceed 100000"),
+        .isFloat({gt: 0, max: 500}).withMessage("Price must be greater than 0 and not exceed 500"),
     body("brand").notEmpty().withMessage("Brand Missing"),
     body("size").notEmpty().withMessage("size Missing"),
     body("condition").notEmpty().withMessage("condition Missing"),
