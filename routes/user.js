@@ -10,6 +10,7 @@ const isAuthenticated = require("../middleware/isAuthenticate");
 const handleRegister = require("../controllers/userController/register");
 const handleLogin = require("../controllers/userController/login");
 const handlePassword = require("../controllers/userController/editUserPassword");
+const getUser = require("../controllers/userController/getUser");
 const handleUser = require("../controllers/userController/editUser");
 const deleteUser = require("../controllers/userController/deleteUser");
 const requestResetPassword = require("../controllers/userController/forgotPassword");
@@ -28,6 +29,8 @@ userRoute.post("/login",
 );
 
 // new route I create for this project
+
+userRoute.get("/", getUser);
 
 userRoute.put("/update", 
     isAuthenticated, 
