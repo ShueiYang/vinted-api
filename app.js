@@ -9,7 +9,7 @@ const offersRoute = require("./routes/offers");
 const app = express();
 
 const corsOptions = {
-    origin: ["https://shueiyang-vinted.netlify.app", "http://localhost:8000"],
+    origin: ["https://shueiyang-vinted.netlify.app", "http://localhost:5173"],
     credentials: true,
 };
 
