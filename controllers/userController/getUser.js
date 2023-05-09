@@ -8,7 +8,7 @@ async function getUser(req, res) {
             return res.status(204).send();
         }
         const clientToken = req.headers.authorization.split(" ")[1];
-        const user = await User.findOne({token: clientToken}, "account").exec();
+        const user = await User.findOne({token: clientToken}, "account email newsletter").exec();
         if(!user) {
             throw { status: 403, message: "Forbidden User" }
         }
