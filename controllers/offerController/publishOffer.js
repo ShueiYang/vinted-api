@@ -55,7 +55,7 @@ async function publishOffer(req, res) {
                     newOffer.product_image = result;
                     newOffer.product_pictures.push(result);
                 } else {
-                    const result = await uploadOfferPicture(picture[i], userId, newOffer._id);
+                    const result = await uploadOfferPicture(picture[i], userId, newOffer._id, i);
                     newOffer.product_pictures.push(result);
                 }
             }

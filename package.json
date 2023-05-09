@@ -21,6 +21,7 @@
     "helmet": "^6.1.5",
     "mongoose": "^7.0.3",
     "nodemailer": "^6.9.1",
+    "stripe": "^12.4.0",
     "uid2": "^1.0.0"
   },
   "devDependencies": {

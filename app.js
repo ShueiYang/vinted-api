@@ -5,6 +5,7 @@ const cors = require("cors");
 const userRoute = require("./routes/user");
 const offerRoute = require("./routes/offer");
 const offersRoute = require("./routes/offers");
+const payRoute = require("./routes/payment");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get("/", (req, res)=> {
 app.use("/user", userRoute);
 app.use("/offer", offerRoute);
 app.use("/offers", offersRoute);
+app.use("/payment", payRoute);
 
 
 app.all("*", (req, res) => {
