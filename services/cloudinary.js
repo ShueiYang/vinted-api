@@ -24,11 +24,11 @@ async function uploadUserAvatar (imgFile, userId) {
 }        
 
 
-async function uploadOfferPicture (imgFile, userId, offerId) {
+async function uploadOfferPicture (imgFile, userId, offerId, index) {
     try {
         const result = await cloudinary.uploader.upload(convertToBase64(imgFile), {
             folder: `api/vinted-v2/offers/${userId}/${offerId}`,
-            public_id: "preview"
+            public_id: (index && index !== 0) ? `preview${index}` : "preview"
         });
         const {url, api_key, ...pictureData } = result;
         return pictureData;       
