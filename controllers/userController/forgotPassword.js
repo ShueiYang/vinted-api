@@ -12,8 +12,8 @@ async function requestResetPassword (req, res) {
         if(userFound === null) {
             return res.status(202).json({message: "Password reset link has been sent if the user exist"});
         }
-        const generateToken = uid2(64);    
-        
+        // if userFound we create a resetToken with 15 min lifespan
+        const generateToken = uid2(64);      
         const resetToken = new ResetToken({
             token: generateToken,
             userId: userFound._id,
