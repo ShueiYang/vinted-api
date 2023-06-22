@@ -14,9 +14,14 @@ async function getOffers(req, res) {
         const query = {};
         const sortFilter = {};
 
+        // regular expression match in both the title and product_details["MARQUE"] 
         if (title) {
-            query.product_name = new RegExp(`${title}`, "i");
+            query.$or = [
+                { product_name: new RegExp(`${title}`, "i") },
+                {"product_details.MARQUE": new RegExp(`${title}`, "i")}
+            ]
         }
+
         if (priceMin || priceMax) {
             query.product_price = {};
             if (priceMin) {
