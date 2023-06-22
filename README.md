@@ -2,6 +2,11 @@
 
 A project learning from [Le Reacteur](https://github.com/lereacteur) to rebuid the backend using REST API for Vinted, a website where we can buy, sell, or trade clothes, shoes and accessories !
 
+The [frontend](https://github.com/ShueiYang/vinted-project) connecting to this project.
+
+![Alt text](https://github.com/ShueiYang/vinted-project/blob/main/public/images/Screenshot.png)
+
+
 To keep "learning by doing" I also build some new route for User in order for them to update profile, delete the account, update the password and the possibility to Reset the password.
 
 #
